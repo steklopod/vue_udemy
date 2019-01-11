@@ -1,20 +1,23 @@
 <template>
-  <div class="hello">
-    <h1 v-once>{{ msg }}</h1>
+  <div v-on:mousemove="updateCoord">
 
-    <div id="in">
+    <div id="ввод данных">
+      <h1 v-once>{{ msg }}</h1>
       <input type="text" v-on:keyup="change">
-
-      <H3>{{msg}} - <a v-bind:href="link">Яндекс</a></H3>
-
-      <button v-on:click="increase(2)">Кликни меня</button>
-      <p>{{counter}}</p>
-
-      <p v-on:mousemove="updateCoord">
-        Координаты: {{ x }} / {{ y }}
-        - <span v-on:mousemove.stop="">ОСТАНОВИТ</span>
-      </p>
+      <h3>{{msg}} - <a v-bind:href="link">Яндекс</a></h3>
     </div>
+
+    <div id="счетчики">
+      <button v-on:click="counter++">Кликни меня</button>
+      <button v-on:click="increase(2)">Кликни меня +2</button>
+      <p>{{counter > 10 ? 'Больше 10-ти' : counter}}</p>
+    </div>
+
+    <div id="координаты">
+      Координаты: {{ x }} / {{ y }}
+      - <span v-on:mousemove.stop="">Наведи сюда, чтобы остановить</span>
+    </div>
+
 
   </div>
 </template>
@@ -46,7 +49,7 @@
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- Добавьте атрибут "scoped", чтобы ограничить CSS только этим компонентом -->
 <style scoped>
   h1, h2 {
     font-weight: bold;
@@ -64,5 +67,10 @@
 
   a {
     color: #42b983;
+  }
+
+  span {
+    border: black;
+    border-style: solid
   }
 </style>
