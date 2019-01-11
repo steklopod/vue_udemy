@@ -8,7 +8,7 @@
     </div>
 
     <div id="счетчики">
-      <button @click="counter++" >Увеличить на 1</button>
+      <button @click="counter++">Увеличить на 1</button>
       <button @click="increase(2)" :class="divClasses">Увеличить на 2</button>
       <button v-on:click="decrease">Уменьшить на 1</button>
       <p :class="{red: addRed}">{{result > 10 ? 'Больше 10-ти' : result}}</p>
@@ -26,6 +26,17 @@
 
     <button @click="addRed = ! addRed">Изменить цвет</button>
 
+    <div id="квадратики">
+      <h3>Введи значения цвета. Например "red"</h3>
+      <div class="squares" :style="{backgroundColor: color}"></div>
+      <div class="squares" :style="myStyle"></div>
+      <div class="squares" :style="[myStyle, {height: width + 'px'}]"></div>
+      css цвет:
+      <input type="text" v-model="color">
+      ширина:
+      <input type="text" v-model="width">
+    </div>
+
   </div>
 </template>
 
@@ -40,7 +51,9 @@
         counter: 0,
         x: 0,
         y: 0,
-        addRed: false
+        addRed: false,
+        color: 'gray',
+        width: 100
       }
     },
     computed: {
@@ -50,6 +63,12 @@
       divClasses: function () {
         return {
           blue: this.addRed, orange: !this.addRed
+        }
+      },
+      myStyle: function () {
+        return {
+          backgroundColor: this.color,
+          width: this.width + 'px'
         }
       }
     },
@@ -120,5 +139,13 @@
 
   .aqua {
     background: aqua;
+  }
+
+  .squares {
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+    display: inline-block;
+    margin: 10px;
   }
 </style>
