@@ -8,8 +8,9 @@
     </div>
 
     <div id="счетчики">
-      <button v-on:click="counter++">Кликни меня</button>
-      <button v-on:click="increase(2)">Кликни меня +2</button>
+      <button v-on:click="counter++">Увеличить на 1</button>
+      <button v-on:click="increase(2)">Увеличить на 2</button>
+      <button v-on:click="decrease">Уменьшить на 1</button>
       <p>{{counter > 10 ? 'Больше 10-ти' : counter}}</p>
     </div>
 
@@ -45,6 +46,9 @@
       },
       increase: function (step) {
         this.counter += step
+      },
+      decrease: function () {
+        this.counter --
       },
       updateCoord: function (event) {
         this.x = event.clientX
