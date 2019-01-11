@@ -5,12 +5,15 @@
     <div id="in">
       <input type="text" v-on:keyup="change">
 
-      <H3>{{msg}} - <a v-bind:href="link">Yandex</a></H3>
+      <H3>{{msg}} - <a v-bind:href="link">Яндекс</a></H3>
 
-      <button v-on:click="increase(2)">Click me</button>
+      <button v-on:click="increase(2)">Кликни меня</button>
       <p>{{counter}}</p>
 
-      <p v-on:mousemove="updateCoord">Координаты: {{ x }} / {{ y }}</p>
+      <p v-on:mousemove="updateCoord">
+        Координаты: {{ x }} / {{ y }}
+        - <span v-on:mousemove.stop="">ОСТАНОВИТ</span>
+      </p>
     </div>
 
   </div>
