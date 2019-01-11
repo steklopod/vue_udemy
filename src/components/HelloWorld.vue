@@ -18,6 +18,10 @@
       - <span v-on:mousemove.stop="">Наведи сюда, чтобы остановить</span>
     </div>
 
+    <div id="двунаправленное_связывание">
+      <input type="text" v-model="name">
+      <p>{{name}}</p>
+    </div>
 
   </div>
 </template>
@@ -28,6 +32,7 @@
     data () {
       return {
         msg: 'Начальное значение `msg`',
+        name: 'Дима',
         link: 'https://yandex.ru',
         counter: 0,
         x: 0,
@@ -72,5 +77,9 @@
   span {
     border: black;
     border-style: solid
+  }
+
+  div {
+    margin-top: 2em;
   }
 </style>
