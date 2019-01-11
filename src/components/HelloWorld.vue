@@ -1,22 +1,22 @@
 <template>
   <div v-on:mousemove="updateCoord">
 
-    <div id="ввод_данных" :class="{aqua: addRed}">
+    <div id="ввод_данных" :class="{aqua: addRed, orange: !addRed}">
       <h1 v-once>{{ msg }}</h1>
       <input type="text" v-on:keyup="change">
       <h3>{{msg}} - <a :href="link">Яндекс</a></h3>
     </div>
 
     <div id="счетчики">
-      <button @click="counter++">Увеличить на 1</button>
-      <button @click="increase(2)">Увеличить на 2</button>
+      <button @click="counter++" >Увеличить на 1</button>
+      <button @click="increase(2)" :class="divClasses">Увеличить на 2</button>
       <button v-on:click="decrease">Уменьшить на 1</button>
       <p :class="{red: addRed}">{{result > 10 ? 'Больше 10-ти' : result}}</p>
     </div>
 
     <div id="координаты">
       Координаты: {{ x }} / {{ y }}
-      - <span v-on:mousemove.stop="" class="blue">Наведи сюда, чтобы остановить</span>
+      - <span v-on:mousemove.stop="" class="grey">Наведи сюда, чтобы остановить</span>
     </div>
 
     <div id="двунаправленное_связывание">
@@ -46,6 +46,11 @@
     computed: {
       result: function () {
         return this.counter == 5 ? 'Ура, счастливое число 5 !!!' : this.counter
+      },
+      divClasses: function () {
+        return {
+          blue: this.addRed, orange: !this.addRed
+        }
       }
     },
 
@@ -109,8 +114,8 @@
     color: red;
   }
 
-  .blue {
-    color: blue;
+  .orange {
+    color: orange;
   }
 
   .aqua {
