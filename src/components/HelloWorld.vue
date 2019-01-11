@@ -4,14 +4,14 @@
     <div id="ввод данных">
       <h1 v-once>{{ msg }}</h1>
       <input type="text" v-on:keyup="change">
-      <h3>{{msg}} - <a v-bind:href="link">Яндекс</a></h3>
+      <h3>{{msg}} - <a :href="link">Яндекс</a></h3>
     </div>
 
     <div id="счетчики">
-      <button v-on:click="counter++">Увеличить на 1</button>
-      <button v-on:click="increase(2)">Увеличить на 2</button>
+      <button @click="counter++">Увеличить на 1</button>
+      <button @click="increase(2)">Увеличить на 2</button>
       <button v-on:click="decrease">Уменьшить на 1</button>
-      <p>{{counter > 10 ? 'Больше 10-ти' : counter}}</p>
+      <p>{{result > 10 ? 'Больше 10-ти' : result}}</p>
     </div>
 
     <div id="координаты">
@@ -40,6 +40,12 @@
         y: 0
       }
     },
+    computed: {
+      result: function () {
+        return this.counter == 5 ? 'Ура, счастливое число 5 !!!' : this.counter
+      }
+    },
+
     methods: {
       change: function (event) {
         this.msg = event.target.value
@@ -60,7 +66,7 @@
         var vm = this
         setTimeout(function () {
           vm.counter = 0
-        }, 2000)
+        }, 3000)
       }
     }
   }
