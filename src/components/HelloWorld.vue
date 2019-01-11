@@ -48,11 +48,19 @@
         this.counter += step
       },
       decrease: function () {
-        this.counter --
+        this.counter--
       },
       updateCoord: function (event) {
         this.x = event.clientX
         this.y = event.clientY
+      }
+    },
+    watch: {
+      counter: function (value) {
+        var vm = this
+        setTimeout(function () {
+          vm.counter = 0
+        }, 2000)
       }
     }
   }
