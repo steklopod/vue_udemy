@@ -1,7 +1,11 @@
 <template>
-  <div>
-Dfdssf
+
+  <div id="видимость">
+    <h4>Ты меня видишь?</h4>
+    <h4 v-if="canSee">А меня?</h4>
+    <button @click="canSee = !canSee">Изменить видимость</button>
   </div>
+
 </template>
 
 <script>
@@ -9,19 +13,12 @@ Dfdssf
     name: 'Level_02',
     data () {
       return {
-
+        canSee: true
       }
     },
-    computed: {
-
-    },
-
-    methods: {
-
-    },
-    watch: {
-
-    }
+    computed: {},
+    methods: {},
+    watch: {}
   }
 </script>
 
@@ -55,3 +52,11 @@ Dfdssf
   }
 
 </style>
+margin-top: 2em;
+}
+
+</
+
+style
+
+>
