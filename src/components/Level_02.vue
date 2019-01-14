@@ -1,11 +1,20 @@
 <template>
+  <div id="main">
 
-  <div id="видимость">
-    <h4>Ты меня видишь?</h4>
-    <h4 v-if="canSee">А меня?</h4>
-    <button @click="canSee = !canSee">Изменить видимость</button>
+    <div id="видимость">
+      <h4>Ты меня видишь?</h4>
+      <h4 v-if="canSee">А меня?</h4>
+      <button @click="canSee = !canSee">Изменить видимость</button>
+    </div>
+
+    <div id="список">
+      <ul>
+        <li v-for="(ingredient, i) in ingredients"> {{ingredient}} ({{ i }})
+        </li>
+      </ul>
+    </div>
+
   </div>
-
 </template>
 
 <script>
@@ -13,7 +22,13 @@
     name: 'Level_02',
     data () {
       return {
-        canSee: true
+        canSee: true,
+        ingredients: ['мясо', 'фрукт', 'печенье'],
+        persons: [
+          {name: 'Дима', age: 29, coloro: 'red'},
+          {name: 'Вася', age: 18, coloro: 'red'}
+        ]
+
       }
     },
     computed: {},
@@ -52,11 +67,3 @@
   }
 
 </style>
-margin-top: 2em;
-}
-
-</
-
-style
-
->
