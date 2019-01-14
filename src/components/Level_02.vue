@@ -9,17 +9,20 @@
 
     <div id="список">
       <ul>
-        <li v-for="(ingredient, i) in ingredients"> {{ingredient}} ({{ i }})
+        <li v-for="(ingredient, i) in ingredients" :key="ingredient"> {{ingredient}} ({{ i }})
         </li>
       </ul>
+      <button @click="ingredients.push('spices')">Добавить в список</button>
 
       <hr>
       <ul>
         <li v-for="person in persons">
-          <span v-for="(value, key) in person">{{key}} : {{value}}</span>
+          <span v-for="(value, key, index) in person">{{key}} : {{value}} ({{index}})</span>
         </li>
       </ul>
       <hr>
+
+      <span v-for="n in 10">{{n}}</span>
 
     </div>
 
