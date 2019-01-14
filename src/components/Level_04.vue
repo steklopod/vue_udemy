@@ -74,23 +74,35 @@
         this.monsterHealth = 100
       },
       attack: function () {
-        this.monsterHealth -= this.calculateDamage(3, 10)
-        if (this.checkWin()){
-          return
-        }
-        this.playerHealth -= this.calculateDamage(5, 12)
+        this.playerAttack(3, 10)
+        this.playerHealth -= this.getRandom(5, 12)
         this.checkWin()
       },
       specialAttack: function () {
-
+        this.playerAttack(10, 20)
+        this.monsterAttacks()
       },
       heal: function () {
-
+        if (this.playerHealth <= 90) {
+          this.playerHealth += this.getRandom(5, 10)
+        } else {
+          this.playerHealth = 100
+        }
       },
       giveUp: function () {
 
       },
-      calculateDamage: function (min, max) {
+      playerAttack: function (min, max) {
+        this.monsterHealth -= this.getRandom(min, max)
+        if (this.checkWin()) {
+          return
+        }
+      },
+      monsterAttacks: function () {
+        this.playerHealth -= this.getRandom(5, 12)
+        this.checkWin()
+      },
+      getRandom: function (min, max) {
         return Math.max(Math.floor(Math.random() * max) + 1)
       },
 
@@ -101,14 +113,14 @@
           } else {
             this.gameIsRunning = false
           }
-          return true;
-        } else if (this.playerHealth <= 0){
+          return true
+        } else if (this.playerHealth <= 0) {
           if (confirm('Ты Проиграл! Сыграем еще?')) {
             this.startGame()
           } else {
             this.gameIsRunning = false
           }
-          return false;
+          return false
         }
       }
 
