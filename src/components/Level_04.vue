@@ -43,11 +43,12 @@
       </div>
     </section>
 
-    <section class="row log">
+    <section class="row log" v-if="turns.length > 0">
       <div class="small-12 columns">
         <ul>
-          <li>
-
+          <li  v-for="turn in turns"
+          :class="{'player-turn': turn.isPlayer, 'monster-turn': !turn.isPlayer}">
+              {{turn.text}}
           </li>
         </ul>
       </div>
@@ -63,7 +64,8 @@
       return {
         playerHealth: 0,
         monsterHealth: 0,
-        gameIsRunning: false
+        gameIsRunning: false,
+        turns: [  ]
       }
     },
     computed: {},
@@ -72,10 +74,11 @@
         this.gameIsRunning = true
         this.playerHealth = 100
         this.monsterHealth = 100
+        this.turns = []
       },
       attack: function () {
         this.playerAttack(3, 10)
-        this.playerHealth -= this.getRandom(5, 12)
+        this.monsterAttacks(5, 12)
         this.checkWin()
       },
       specialAttack: function () {
@@ -90,16 +93,27 @@
         }
       },
       giveUp: function () {
-
+        this.gameIsRunning = false
+        this.turns = []
       },
       playerAttack: function (min, max) {
-        this.monsterHealth -= this.getRandom(min, max)
+        let damage = this.getRandom(min, max)
+        this.turns.unshift({
+          isPlayer: true,
+          text: 'Ты повредил Монстра на ' + damage
+        })
+        this.monsterHealth -= damage
         if (this.checkWin()) {
-          return
+          return damage;
         }
       },
       monsterAttacks: function () {
-        this.playerHealth -= this.getRandom(5, 12)
+        let damage = this.getRandom(5, 12)
+        this.turns.unshift({
+          isPlayer: false,
+          text: 'Монстр повредил Вас на ' + damage
+        })
+        this.playerHealth -= damage
         this.checkWin()
       },
       getRandom: function (min, max) {
@@ -124,9 +138,8 @@
         }
       }
 
-    },
+    }
 
-    watch: {}
   }
 </script>
 
