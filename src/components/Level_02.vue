@@ -12,7 +12,17 @@
         <li v-for="(ingredient, i) in ingredients"> {{ingredient}} ({{ i }})
         </li>
       </ul>
+
+      <hr>
+      <ul>
+        <li v-for="person in persons">
+          <span v-for="(value, key) in person">{{key}} : {{value}}</span>
+        </li>
+      </ul>
+      <hr>
+
     </div>
+
 
   </div>
 </template>
@@ -58,8 +68,9 @@
   }
 
   span {
-    border: black;
-    border-style: solid
+    border: gray;
+    border-style: solid;
+    padding: 5px;
   }
 
   div {
