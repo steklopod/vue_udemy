@@ -1,23 +1,26 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <app-user></app-user>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+  import User from './components/User.vue';
+
+  export default {
+    components: {
+      appUser: User
+    }
+  }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  div.component {
+    border: 1px solid black;
+    padding: 30px;
+  }
 </style>
