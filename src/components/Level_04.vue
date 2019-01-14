@@ -28,18 +28,18 @@
     </section>
 
 
-    <section class="row controls">
+    <section class="row controls" v-if="!gameIsRunning">
       <div class="small-12 columns">
-        <button id="start-game">Начать новую игру</button>
+        <button id="start-game" @click="startGame">Начать новую игру</button>
       </div>
     </section>
 
-    <section class="row controls">
+    <section class="row controls" v-else>
       <div class="small-12 columns">
-        <button id="attack">АТАКА</button>
-        <button id="special-attack">СПЕЦИАЛЬНАЯ АТАКА</button>
-        <button id="heal">ИЗЛЕЧИТЬ</button>
-        <button id="give-up">СДАЮСЬ</button>
+        <button id="attack" @click="attack">АТАКА</button>
+        <button id="special-attack" @click="specialAttack">СПЕЦИАЛЬНАЯ АТАКА</button>
+        <button id="heal" @click="heal">ИЗЛЕЧИТЬ</button>
+        <button id="give-up" @click="giveUp">СДАЮСЬ</button>
       </div>
     </section>
 
@@ -61,13 +61,59 @@
     name: 'Level_04',
     data () {
       return {
-        playerHealth: 100,
-        monsterHealth: 100,
+        playerHealth: 0,
+        monsterHealth: 0,
         gameIsRunning: false
       }
     },
     computed: {},
-    methods: {},
+    methods: {
+      startGame: function () {
+        this.gameIsRunning = true
+        this.playerHealth = 100
+        this.monsterHealth = 100
+      },
+      attack: function () {
+        this.monsterHealth -= this.calculateDamage(3, 10)
+        if (this.checkWin()){
+          return
+        }
+        this.playerHealth -= this.calculateDamage(5, 12)
+        this.checkWin()
+      },
+      specialAttack: function () {
+
+      },
+      heal: function () {
+
+      },
+      giveUp: function () {
+
+      },
+      calculateDamage: function (min, max) {
+        return Math.max(Math.floor(Math.random() * max) + 1)
+      },
+
+      checkWin: function () {
+        if (this.monsterHealth <= 0) {
+          if (confirm('Ты выйграл! Сыграем еще?')) {
+            this.startGame()
+          } else {
+            this.gameIsRunning = false
+          }
+          return true;
+        } else if (this.playerHealth <= 0){
+          if (confirm('Ты Проиграл! Сыграем еще?')) {
+            this.startGame()
+          } else {
+            this.gameIsRunning = false
+          }
+          return false;
+        }
+      }
+
+    },
+
     watch: {}
   }
 </script>
