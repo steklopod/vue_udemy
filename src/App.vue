@@ -8,10 +8,18 @@
     </div>
 
     <app-new-quote
-    @quoteAdded="newQuote"
+      @quoteAdded="newQuote"
     ></app-new-quote>
 
-    <app-quote-grid :quotes="quotes"></app-quote-grid>
+    <app-quote-grid
+      @quoteDeleted="deleteQuote"
+      :quotes="quotes"></app-quote-grid>
+
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <div class="alert alert-info">Кликни по цитате, чтобы удалить ее</div>
+      </div>
+    </div>
 
 
   </div>
@@ -31,6 +39,9 @@
       }
     },
     methods: {
+      deleteQuote (index) {
+        this.quotes.splice(index, 1)
+      },
       newQuote (newQuote) {
         this.quotes.push(newQuote)
       }
