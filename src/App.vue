@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <form>
+
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
           <h1>Подать жалобу</h1>
@@ -10,25 +11,37 @@
             <input
               type="text"
               id="email"
-              class="form-control">
+              class="form-control"
+              v-model="userData.email"
+            >
           </div>
+
           <div class="form-group">
             <label for="password">Пароль</label>
             <input
               type="password"
               id="password"
-              class="form-control">
+              class="form-control"
+              v-model="userData.password"
+
+            >
           </div>
+
           <div class="form-group">
             <label for="age">Возраст</label>
             <input
               type="number"
               id="age"
-              class="form-control">
+              class="form-control"
+              v-model="userData.age"
+
+            >
           </div>
 
         </div>
       </div>
+
+      <!--Сообщение-->
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
           <label for="message">Сообщение</label><br>
@@ -39,6 +52,7 @@
             class="form-control"></textarea>
         </div>
       </div>
+
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
           <div class="form-group">
@@ -58,6 +72,8 @@
 
         </div>
       </div>
+
+
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
           <label for="male">
@@ -101,9 +117,9 @@
             <h4>Твои Данные</h4>
           </div>
           <div class="panel-body">
-            <p>Почта:</p>
-            <p>Пароль:</p>
-            <p>Возраст:</p>
+            <p>Почта: {{userData.email}}</p>
+            <p>Пароль: {{userData.password}}</p>
+            <p>Возраст: {{userData.age}}</p>
             <p>Сообщение: </p>
             <p><strong>Отправлен email?</strong></p>
             <ul>
@@ -121,6 +137,18 @@
 
 <script>
   export default {
+    data () {
+      return {
+        userData: {
+          email: '',
+          password: '',
+          age: 29
+        }
+
+
+      }
+    }
+
   }
 </script>
 
