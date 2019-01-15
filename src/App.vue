@@ -1,67 +1,129 @@
 <template>
   <div class="container">
+    <form>
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+          <h1>Подать жалобу</h1>
+          <hr>
+          <div class="form-group">
+            <label for="email">Электронная почта</label>
+            <input
+              type="text"
+              id="email"
+              class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="password">Пароль</label>
+            <input
+              type="password"
+              id="password"
+              class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="age">Возраст</label>
+            <input
+              type="number"
+              id="age"
+              class="form-control">
+          </div>
 
-    <app-header :quoteCount="quotes.length" :max-qoutes="maxQoutes"></app-header>
-    <app-new-quote
-      @quoteAdded="newQuote"
-    ></app-new-quote>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
+          <label for="message">Сообщение</label><br>
+          <!-- Интерполяция между <textarea> {{test}} </ textarea> не работает!-->
+          <textarea
+            id="message"
+            rows="5"
+            class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+          <div class="form-group">
+            <label for="sendmail">
+              <input
+                type="checkbox"
+                id="sendmail"
+                value="SendMail"> Отправить email
+            </label>
+            <label for="sendInfomail">
+              <input
+                type="checkbox"
+                id="sendInfomail"
+                value="SendInfoMail"> Отправить Infomail
+            </label>
+          </div>
 
-    <app-quote-grid
-      @quoteDeleted="deleteQuote"
-      :quotes="quotes"></app-quote-grid>
-
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
+          <label for="male">
+            <input
+              type="radio"
+              id="male"
+              value="Male"> Мужской
+          </label>
+          <label for="female">
+            <input
+              type="radio"
+              id="female"
+              value="Female"> Женский
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 from-group">
+          <label for="priority">Приоритет</label>
+          <select
+            id="priority"
+            class="form-control">
+            <option></option>
+          </select>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+          <button
+            class="btn btn-primary">Отправить!
+          </button>
+        </div>
+      </div>
+    </form>
+    <hr>
     <div class="row">
-      <div class="col-sm-12 text-center">
-        <div class="alert alert-info">Кликни по цитате, чтобы удалить ее</div>
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>Твои Данные</h4>
+          </div>
+          <div class="panel-body">
+            <p>Почта:</p>
+            <p>Пароль:</p>
+            <p>Возраст:</p>
+            <p>Сообщение: </p>
+            <p><strong>Отправлен email?</strong></p>
+            <ul>
+              <li></li>
+            </ul>
+            <p>Пол:</p>
+            <p>Приоритет:</p>
+            <p>Переключаемый:</p>
+          </div>
+        </div>
       </div>
     </div>
-
-
   </div>
 </template>
 
 <script>
-  import QuoteGrid from './components/QuoteGrid.vue'
-  import NewQuote from './components/NewQuote.vue'
-  import Header from './components/Header.vue'
-
   export default {
-    data () {
-      return {
-        quotes: [
-          'Цитата по умолчанию'
-        ],
-        maxQoutes: 10
-      }
-    },
-    methods: {
-      deleteQuote (index) {
-        this.quotes.splice(index, 1)
-      },
-      newQuote (newQuote) {
-        if(this.quotes.length >= this.maxQoutes){
-          alert('Больше нельзя!')
-        }
-        this.quotes.push(newQuote)
-      }
-
-    },
-    components: {
-      appQuoteGrid: QuoteGrid,
-      appNewQuote: NewQuote,
-      appHeader: Header
-    }
   }
 </script>
 
-<style scoped>
-  div {
-    margin: 10px auto;
-    text-align: center;
-  }
+<style>
 
-  p {
-    color: orange;
-    font-family: "Comic Sans MS", serif;
-  }
 </style>
