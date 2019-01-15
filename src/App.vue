@@ -1,12 +1,7 @@
 <template>
   <div class="container">
 
-    <div class="progress">
-      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-
-      </div>
-    </div>
-
+    <app-header :quoteCount="quotes.length" :max-qoutes="maxQoutes"></app-header>
     <app-new-quote
       @quoteAdded="newQuote"
     ></app-new-quote>
@@ -28,6 +23,7 @@
 <script>
   import QuoteGrid from './components/QuoteGrid.vue'
   import NewQuote from './components/NewQuote.vue'
+  import Header from './components/Header.vue'
 
   export default {
     data () {
@@ -43,13 +39,17 @@
         this.quotes.splice(index, 1)
       },
       newQuote (newQuote) {
+        if(this.quotes.length >= this.maxQoutes){
+          alert('Больше нельзя!')
+        }
         this.quotes.push(newQuote)
       }
 
     },
     components: {
       appQuoteGrid: QuoteGrid,
-      appNewQuote: NewQuote
+      appNewQuote: NewQuote,
+      appHeader: Header
     }
   }
 </script>
