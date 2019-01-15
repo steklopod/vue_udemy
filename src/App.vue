@@ -22,8 +22,7 @@
               type="password"
               id="password"
               class="form-control"
-              v-model="userData.password"
-
+              v-model.lazy.trim="userData.password"
             >
           </div>
 
@@ -33,8 +32,7 @@
               type="number"
               id="age"
               class="form-control"
-              v-model="userData.age"
-
+              v-model.number="userData.age"
             >
           </div>
 
