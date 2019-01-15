@@ -1,12 +1,23 @@
 <template>
   <div>
     <h3>New</h3>
+    <button @click="counter++">Увеличить</button>
+    <p>{{counter}}</p>
   </div>
 </template>
 
 
 <script>
-  export default {}
+  export default {
+    data () {
+      return{
+        counter: 0
+      }
+    },
+    destroyed () {
+      console.log("Компонент разрушен !!!")
+    }
+  }
 </script>
 
 <style scoped>

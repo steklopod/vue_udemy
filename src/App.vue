@@ -9,14 +9,15 @@
         <hr>
         <p>Выбранный компонент: {{selectedComponent}}</p>
 
-        <component :is="selectedComponent">
-          <p>По умолчанию</p>
-        </component>
-        <!--<app-quote>-->
+        <keep-alive>
+          <component :is="selectedComponent">
+            <p>По умолчанию</p>
+          </component>
+          <!--<app-quote>-->
           <!--<h2 slot="title">{{quoteTitle}}</h2>-->
           <!--<p slot="content">Жить прекрасно</p>-->
-        <!--</app-quote>-->
-
+          <!--</app-quote>-->
+        </keep-alive>
         <hr/>
 
       </div>
@@ -50,8 +51,9 @@
     margin: 10px auto;
     text-align: center;
   }
-  p{
+
+  p {
     color: orange;
-    font-family: "Comic Sans MS",serif;
+    font-family: "Comic Sans MS", serif;
   }
 </style>

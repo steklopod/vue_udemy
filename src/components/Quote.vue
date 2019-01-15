@@ -3,6 +3,7 @@
 
     <div class="title">
       <slot name="title"></slot>
+      <span style="color: #ccc"><slot name="subtitle">ПодЗаголовок</slot></span>
     </div>
 
     <div>
