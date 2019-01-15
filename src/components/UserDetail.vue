@@ -3,6 +3,7 @@
     <h3>You may view the User Details here</h3>
     <p>Many Details</p>
     <p>User name: {{ name }}</p>
+    <button @click="resetName">Reset name</button>
   </div>
 </template>
 
@@ -17,6 +18,10 @@
     methods: {
       swithName () {
         return this.name.split('').reverse().join('')
+      },
+      resetName () {
+        this.name = 'Dima'
+        this.$emit('nameWasReset', this.name)
       }
     }
 
