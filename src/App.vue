@@ -4,7 +4,8 @@
       <div class="col-xs-12">
 
         <app-quote>
-
+          <h2>{{quoteTitle}}</h2>
+          <p>Жить прекрасно</p>
         </app-quote>
 
       </div>
@@ -13,13 +14,22 @@
 </template>
 
 <script>
-import Quote from './components/Quote.vue'
+  import Quote from './components/Quote.vue'
+
   export default {
-    components:{
+    data () {
+      return {
+        quoteTitle: ' Цитата №1'
+
+      }
+    },
+
+    components: {
       appQuote: Quote
     }
   }
 </script>
 
-<style>
+<style scoped>
+
 </style>
