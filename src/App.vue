@@ -82,26 +82,33 @@
             <input
               type="radio"
               id="male"
-              value="Male"> Мужской
+              value="Мужской"
+              v-model="gender"
+            > Мужской
           </label>
           <label for="female">
             <input
               type="radio"
               id="female"
-              value="Female"> Женский
+              value="Женский"
+              v-model="gender"
+            > Женский
           </label>
         </div>
       </div>
+
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 from-group">
-          <label for="priority">Приоритет</label>
+          <label for="priority">Приоритетность</label>
           <select
             id="priority"
             class="form-control">
-            <option></option>
+            v-model="selectedPriority"
+            <option v-for="priority in priorites">{{priority}}</option>
           </select>
         </div>
       </div>
+
       <hr>
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
@@ -112,6 +119,7 @@
       </div>
     </form>
     <hr>
+
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
         <div class="panel panel-default">
@@ -127,13 +135,14 @@
             <ul>
               <li v-for="item in sendMail">{{item}}</li>
             </ul>
-            <p>Пол:</p>
-            <p>Приоритет:</p>
+            <p>Пол: {{gender}}</p>
+            <p>Приоритет: {{selectedPriority}}</p>
             <p>Переключаемый:</p>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -147,7 +156,10 @@
           age: 29
         },
         message: 'Сообщение здесь',
-        sendMail: []
+        sendMail: [],
+        gender: 'Мужской',
+        priorites: ['Высокая', 'Средняя', 'Низкая'],
+        selectedPriority: 'Высокая'
 
       }
     }
