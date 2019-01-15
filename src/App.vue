@@ -43,11 +43,13 @@
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
           <label for="message">Сообщение</label><br>
-          <!-- Интерполяция между <textarea> {{test}} </ textarea> не работает!-->
+          <!-- Интерполяция между <textarea> {{test}} </textarea> не работает!-->
           <textarea
             id="message"
             rows="5"
-            class="form-control"></textarea>
+            class="form-control"
+            v-model="message"
+          ></textarea>
         </div>
       </div>
 
@@ -58,13 +60,15 @@
               <input
                 type="checkbox"
                 id="sendmail"
-                value="SendMail"> Отправить email
+                value="SendMail"
+                v-model="sendMail"> Отправить Email
             </label>
             <label for="sendInfomail">
               <input
                 type="checkbox"
                 id="sendInfomail"
-                value="SendInfoMail"> Отправить Infomail
+                value="SendInfoMail"
+                v-model="sendMail"> Отправить Infomail
             </label>
           </div>
 
@@ -118,10 +122,10 @@
             <p>Почта: {{userData.email}}</p>
             <p>Пароль: {{userData.password}}</p>
             <p>Возраст: {{userData.age}}</p>
-            <p>Сообщение: </p>
+            <p style="white-space: pre">Сообщение: {{message}}</p>
             <p><strong>Отправлен email?</strong></p>
             <ul>
-              <li></li>
+              <li v-for="item in sendMail">{{item}}</li>
             </ul>
             <p>Пол:</p>
             <p>Приоритет:</p>
@@ -141,8 +145,9 @@
           email: '',
           password: '',
           age: 29
-        }
-
+        },
+        message: 'Сообщение здесь',
+        sendMail: []
 
       }
     }
