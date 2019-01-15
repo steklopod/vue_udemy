@@ -1,8 +1,11 @@
 <template>
   <div class="component">
     <h3>You may view the User Details here</h3>
+
     <p>Many Details</p>
     <p>User name: {{ name }}</p>
+    <p>User age: {{ userAge }}</p>
+
     <button @click="resetName">Reset name</button>
     <button @click="resetFn">Reset name 2</button>
   </div>
@@ -15,8 +18,10 @@
         type: String,
         default: ' Need Some Name :-( '
       },
-      resetFn: Function
+      resetFn: Function,
+      userAge: Number
     },
+
     methods: {
       swithName () {
         return this.name.split('').reverse().join('')
