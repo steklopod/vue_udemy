@@ -7,6 +7,10 @@
       </div>
     </div>
 
+    <app-new-quote
+    @quoteAdded="newQuote"
+    ></app-new-quote>
+
     <app-quote-grid :quotes="quotes"></app-quote-grid>
 
 
@@ -15,6 +19,7 @@
 
 <script>
   import QuoteGrid from './components/QuoteGrid.vue'
+  import NewQuote from './components/NewQuote.vue'
 
   export default {
     data () {
@@ -25,8 +30,15 @@
         maxQoutes: 10
       }
     },
+    methods: {
+      newQuote (newQuote) {
+        this.quotes.push(newQuote)
+      }
+
+    },
     components: {
-      appQuoteGrid: QuoteGrid
+      appQuoteGrid: QuoteGrid,
+      appNewQuote: NewQuote
     }
   }
 </script>
