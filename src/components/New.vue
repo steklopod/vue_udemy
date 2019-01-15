@@ -16,6 +16,12 @@
     },
     destroyed () {
       console.log("Компонент разрушен !!!")
+    },
+    deactivated () {
+      console.log('ДЕАКТИВИРОВАНО')
+    },
+    activated () {
+      console.log('АКТИВИРОВАНО')
     }
   }
 </script>
