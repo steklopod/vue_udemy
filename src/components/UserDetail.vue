@@ -4,6 +4,7 @@
     <p>Many Details</p>
     <p>User name: {{ name }}</p>
     <button @click="resetName">Reset name</button>
+    <button @click="resetFn">Reset name 2</button>
   </div>
 </template>
 
@@ -13,7 +14,8 @@
       name: {
         type: String,
         default: ' Need Some Name :-( '
-      }
+      },
+      resetFn: Function
     },
     methods: {
       swithName () {
