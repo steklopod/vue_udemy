@@ -4,6 +4,7 @@
 
     <button @click="changeName">Change my name</button>
 
+    <p>Age (will not change by eventBus): {{age}}</p>
     <hr>
     <div class="row">
 
