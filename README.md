@@ -1,8 +1,7 @@
 [Ссылка на курс](https://www.udemy.com/vuejs-2-the-complete-guide/)
 
-> A Vue.js project
+> Vue.js project
 
-## Build Setup
 
 ```bash
 # install 
