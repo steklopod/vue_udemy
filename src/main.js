@@ -1,17 +1,17 @@
 import Vue from 'vue'
+import VueRouter from 'vue-router';
 import App from './App.vue'
+import { routes } from './routes';
 
-Vue.filter('to-lowercase', function (value) {
-  return value.toLowerCase()
-})
+Vue.use(VueRouter);
 
-Vue.mixin({
-  created () {
-    console.log('Global Mixin - Created Hook')
-  }
-})
+const router = new VueRouter({
+  routes,
+  mode: 'history'
+});
 
 new Vue({
   el: '#app',
+  router,
   render: h => h(App)
 })
